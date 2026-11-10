@@ -11,7 +11,13 @@ class Screen3 extends StatelessWidget {
     'Naoisha': 'assets/imgs/perrito4.png',
   };
 
-  final cats = const ['Moji', 'Moka', 'Felix', 'Pikachu', 'Frenchie'];
+  final Map<String, String> gatos = const {
+    'Moji': 'assets/imgs/gato.png',
+    'Moka': 'assets/imgs/gato1.png',
+    'Felix': 'assets/imgs/gato2.png',
+    'Pikachu': 'assets/imgs/gato3.png',
+    'Frenchie': 'assets/imgs/gato4.png',
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -31,15 +37,15 @@ class Screen3 extends StatelessWidget {
 
           Divider(),
 
-          ...cats.map(
-            (cat) => ListTile(
-              leading: Icon(Icons.pets_rounded),
-              title: Text(cat),
-              subtitle: Text('Gatito complicado'),
-              trailing: Icon(Icons.arrow_forward),
-              tileColor: const Color.fromARGB(255, 152, 123, 231),
-            ),
-          ),
+          ...gatos.entries.map((gato) {
+            return _tileCat(
+              gato.key,
+              gato.value,
+              Colors.grey,
+              Colors.amberAccent,
+              Colors.white,
+            );
+          }),
         ],
       ),
     );
@@ -60,7 +66,28 @@ class Screen3 extends StatelessWidget {
       tileColor: tileColor,
       iconColor: iconColor,
       textColor: textColor,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+    );
+    final espacio = SizedBox(height: 10);
+    return Column(children: [tile, espacio]);
+  }
+
+  Widget _tileCat(
+    String catName,
+    String catImage,
+    Color tileColor,
+    Color iconColor,
+    Color textColor,
+  ) {
+    final tile = ListTile(
+      title: Image.asset(catImage, width: 50, height: 50),
+      leading: Icon(Icons.pets_rounded),
+      subtitle: Text(catName),
+      trailing: Icon(Icons.arrow_forward),
+      tileColor: tileColor,
+      iconColor: iconColor,
+      textColor: textColor,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
     );
     final espacio = SizedBox(height: 10);
     return Column(children: [tile, espacio]);
