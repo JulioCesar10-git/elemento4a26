@@ -8,11 +8,14 @@ class Screen5 extends StatefulWidget {
 }
 
 class _Screen5State extends State<Screen5> {
-  // Variables para almacenar los calores de entrada
+  // Variables para almacenar los valores de entrada
   bool _switchValue = false;
   double _sliderValue = 0.0;
-  TextEditingController _textController = TextEditingController();
+  final TextEditingController _textController = TextEditingController();
   int radioSelected = 0;
+  bool _ischecked1 = false;
+  bool _ischecked2 = false;
+  bool _ischecked3 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +30,8 @@ class _Screen5State extends State<Screen5> {
           _entradaSwitch(),
           _entradaSlider(),
           _entradaRadio(),
+          _entradaCheck(),
+          ElevatedButton(onPressed: null, child: Text('Guardar')),
         ],
       ),
     );
@@ -150,5 +155,59 @@ class _Screen5State extends State<Screen5> {
         reactNative,
       ],
     );
+  }
+
+  Column _entradaCheck() {
+    final Text pregunta = Text('¿Que usas para correr tus apps?');
+    final Row checks = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        // CheckBox 1
+        Transform.scale(
+          scale: 1.5,
+          child: Checkbox(
+            value: _ischecked1,
+            onChanged: (value) {
+              setState(() {
+                _ischecked1 = value!;
+                print('Cehckbox 1: $_ischecked1');
+              });
+            },
+          ),
+        ),
+        Text('Emulador'),
+
+        // ChecKBox 2
+        Transform.scale(
+          scale: 1.5,
+          child: Checkbox(
+            value: _ischecked2,
+            onChanged: (value) {
+              setState(() {
+                _ischecked2 = value!;
+                print('Cehckbox 2: $_ischecked2');
+              });
+            },
+          ),
+        ),
+        Text('Smartphone'),
+
+        // CheckBox 3
+        Transform.scale(
+          scale: 1.5,
+          child: Checkbox(
+            value: _ischecked3,
+            onChanged: (value) {
+              setState(() {
+                _ischecked3 = value!;
+                print('Cehckbox 3: $_ischecked3');
+              });
+            },
+          ),
+        ),
+        Text('Navegador Web'),
+      ],
+    );
+    return Column(children: [pregunta, checks]);
   }
 }
