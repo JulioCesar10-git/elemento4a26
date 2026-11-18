@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:appmovil1/screens/screen6.dart';
 
 class Screen5 extends StatefulWidget {
   const Screen5({super.key});
@@ -31,7 +32,7 @@ class _Screen5State extends State<Screen5> {
           _entradaSlider(),
           _entradaRadio(),
           _entradaCheck(),
-          ElevatedButton(onPressed: null, child: Text('Guardar')),
+          ElevatedButton(onPressed: _guardar, child: Text('Guardar')),
         ],
       ),
     );
@@ -209,5 +210,22 @@ class _Screen5State extends State<Screen5> {
       ],
     );
     return Column(children: [pregunta, checks]);
+  }
+
+  void _guardar() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => Screen6(
+          nombre: _textController.text,
+          gustaFlutter: _switchValue,
+          nivelFlutter: _sliderValue,
+          radioSelected: radioSelected,
+          emulador: _ischecked1,
+          smartphone: _ischecked2,
+          navegadorWeb: _ischecked3,
+        ),
+      ),
+    );
   }
 }
