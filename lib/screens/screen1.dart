@@ -3,6 +3,7 @@ import 'package:appmovil1/screens/screen3.dart';
 import 'package:appmovil1/screens/screen4.dart';
 import 'package:appmovil1/screens/screen5.dart';
 import 'package:flutter/material.dart';
+import 'package:appmovil1/theme/app_theme.dart';
 
 class Screen1 extends StatelessWidget {
   const Screen1({super.key});
@@ -10,10 +11,7 @@ class Screen1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Pantalla 1', style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.purple,
-      ),
+      appBar: AppBar(title: const Text('Pantalla 1')),
       body: Container(
         color: Colors.blue,
         child: Center(
@@ -22,7 +20,7 @@ class Screen1 extends StatelessWidget {
             children: <Widget>[
               Text(
                 'Seleciona una opcion:',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: AppTheme.lightTheme.textTheme.headlineLarge,
               ),
               SizedBox(height: 20),
               boton('Ejemplo de Rows', Colors.purple, context, Screen2()),

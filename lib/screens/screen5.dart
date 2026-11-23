@@ -21,7 +21,7 @@ class _Screen5State extends State<Screen5> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Sreen 5')),
+      appBar: AppBar(title: Text('Screen 5')),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
